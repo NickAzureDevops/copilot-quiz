@@ -1,15 +1,11 @@
 {
-  "name": "pac-man-game",
+  "name": "pacman-services",
   "version": "1.0.0",
-  "description": "Pac-Man game with purple neon theme built with Vite",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "node server.js"
   },
-  "devDependencies": {
-    "vite": "^8.0.12"
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }
