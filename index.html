@@ -4,24 +4,77 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>👻 Pac-Man Game</title>
+    <title>👻 Pac-Man Dashboard</title>
   </head>
   <body>
     <div id="app">
-      <h1>👻 Pac-Man Game</h1>
-      <div id="game-container">
-        <canvas id="game" width="560" height="560"></canvas>
-        <div id="overlay">
-          <h2>👻 Pac-Man</h2>
-          <p>Press <strong>Enter</strong> or <strong>Space</strong> to start</p>
+      <header class="app-header">
+        <div class="app-title-block">
+          <p class="app-kicker">Playable telemetry surface</p>
+          <h1>Pac-Man dashboard</h1>
+          <p class="app-subtitle">
+            A focused arcade shell for score, lives, and level tracking while you test the game loop.
+          </p>
         </div>
-      </div>
-      <div id="hud">
-        <div>Score: <span id="score">0</span></div>
-        <div>Lives: <span id="lives">3</span></div>
-        <div>Level: <span id="level">1</span></div>
-      </div>
-      <p id="instructions">Arrow keys / WASD to move &nbsp;|&nbsp; Enter / Space to start</p>
+        <div class="status-pills" aria-label="Interface status">
+          <span class="status-pill status-pill--primary">Live canvas</span>
+          <span class="status-pill">Keyboard ready</span>
+        </div>
+      </header>
+
+      <main class="dashboard-shell">
+        <section class="playfield-panel" aria-label="Pac-Man playfield">
+          <div class="panel-head">
+            <div>
+              <p class="panel-label">Playfield</p>
+              <h2 class="panel-title">Arcade view</h2>
+            </div>
+            <p class="panel-meta">560 x 560 canvas</p>
+          </div>
+
+          <div id="game-container">
+            <canvas id="game" width="560" height="560"></canvas>
+            <div id="overlay">
+              <h2>👻 Pac-Man</h2>
+              <p>Press <strong>Enter</strong> or <strong>Space</strong> to start</p>
+            </div>
+          </div>
+
+          <p id="instructions">Arrow keys / WASD to move &nbsp;|&nbsp; Enter / Space to start</p>
+        </section>
+
+        <aside class="sidebar-panel" aria-label="Game dashboard">
+          <div class="sidebar-card">
+            <p class="panel-label">Run state</p>
+            <p class="sidebar-copy">
+              Start the round, watch the telemetry update, and verify score or achievement events without losing sight of the board.
+            </p>
+          </div>
+
+          <div id="hud">
+            <div class="stat-card">
+              <span class="stat-label">Score</span>
+              <span id="score" class="stat-value">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Lives</span>
+              <span id="lives" class="stat-value">3</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Level</span>
+              <span id="level" class="stat-value">1</span>
+            </div>
+          </div>
+
+          <div class="sidebar-card sidebar-card--compact">
+            <p class="panel-label">Controls</p>
+            <ul class="control-list">
+              <li><span>Move</span><strong>Arrow keys / WASD</strong></li>
+              <li><span>Start</span><strong>Enter / Space</strong></li>
+            </ul>
+          </div>
+        </aside>
+      </main>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
