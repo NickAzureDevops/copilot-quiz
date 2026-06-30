@@ -1,0 +1,5 @@
+steps:
+  - name: Fetch base branch for git diff
+    run: |
+      BASE_REF="${GITHUB_BASE_REF:-main}"
+      git fetch origin "${BASE_REF}" --depth=1 || git fetch origin main --depth=1 || true
