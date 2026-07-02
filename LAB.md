@@ -3,22 +3,6 @@
 > **Total time: 20–30 minutes**
 > **Goal:** Show how GitHub Copilot Apps evolves a legacy game into a multi-repo, event-driven system using Plan Mode, Agent Mode, MCP, Workflow Automation, multi-repo tasks, and Canvas.
 
-## ⏱️ Timing Guide
-
-| Segment | Feature | Time |
-| --- | --- | --- |
-| 0:00 | Setup + narrative framing | 2 min |
-| 2:00 | **Canvas** | 3 min |
-| 5:00 | **Plan Mode** | 4 min |
-| 9:00 | **Agent Mode / Agent Merge** | 5 min |
-| 14:00 | **MCP** | 4 min |
-| 18:00 | **Multi-repo task** | 5 min |
-| 23:00 | **Workflow Automation** | 4 min |
-| 27:00 | Close + live demo | 3 min |
-
----
-
----
 
 ## 🏗️ System Overview
 
@@ -63,25 +47,40 @@ Play the game for 10 seconds. Show it works. Then stop.
 
 ## 🟦 1. Canvas (3 min)
 
-> **What you're showing:** Canvas is the visual workspace where plans are shown, approved, and tracked in real time — it's the control surface for everything that follows.
+> **Opening thesis — say this out loud:**
+> "Traditional UIs are for *using* software. Canvas is for *shaping* software while it runs. It's Human-to-AI-to-System — and it actually executes."
 
-### What to do
+### The model (30 sec — show this table)
 
-Open the Canvas panel and show it before triggering anything. Walk through what's visible:
+| Tool | Who talks to who | Executes? |
+|------|-----------------|-----------|
+| **Figma** | Human ↔ Human | No — design only |
+| **Traditional UI** | Human ↔ System | Yes — finished product |
+| **Canvas** | Human ↔ AI ↔ System | Yes — living, evolving system |
 
-1. **Plan view** — proposed steps are listed with file targets and constraints
-2. **Approval gate** — the "Approve" button is visible; nothing runs until you click it
-3. **Execution state** — after approval, each step shows in-progress / done status in real time
+> "Figma made design multiplayer between humans. Canvas makes engineering multiplayer between humans and AI — on a live system."
+
+### The anti-pattern (15 sec)
+
+> "Everyone's first instinct is to build a dashboard in Canvas. That's the trap. Canvas isn't where your *users* live — it's where your *system* becomes visible to you and the AI while you're still shaping it."
+
+### What Canvas looks like in this demo (90 sec)
+
+Open the Canvas panel and walk through:
+
+1. **Plan view** — the Game Agent's proposed steps appear here with file targets and protected areas listed
+2. **Approval gate** — nothing runs until you click Approve; the human stays in the loop
+3. **Execution state** — each step flips in-progress → done in real time as the agent works
+4. **Artifact log** — changed files appear as the agent commits them
 
 ### What to point out
 
-- Canvas is not a chat window — it's an orchestration surface
-- The human stays in control: the plan is always reviewed before execution
-- You can edit the plan in Canvas before approving (show the edit icon)
-- Canvas sits above the agents — it's where the whole system is shaped
+- This is not a mockup — the plan is live and executable
+- You can edit a step before approving (show the edit icon)
+- Canvas sits above both repos — it's the single surface where the whole system is shaped
 
 **Key message:**
-> "Canvas is the Human↔AI↔System interface. Traditional UIs are for using software. Canvas is for shaping it while it runs."
+> "We didn't draw this plan. The AI proposed a system architecture, it's live, and nothing runs until a human approves it."
 
 ---
 
