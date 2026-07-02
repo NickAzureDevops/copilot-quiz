@@ -1,6 +1,6 @@
-# AGENTS.md — pac-man-game
+# AGENTS.md — maze-game
 
-Browser-based Pac-Man game that emits events to pac-man-services.
+Browser-based maze game that emits events to maze-game-services.
 This is a **legacy system being AI-instrumented** — a Vite + vanilla JS app.
 
 ## Setup
@@ -15,7 +15,7 @@ npm run dev   # starts Vite dev server on http://localhost:5173
 ```
 src/
   main.js       # game loop, canvas rendering, score logic, emitEvent calls
-  counter.js    # emitEvent() function — HTTP bridge to pac-man-services
+  counter.js    # emitEvent() function — HTTP bridge to maze-game-services
   style.css     # game styles
 index.html      # canvas + HUD structure
 ```
@@ -58,11 +58,11 @@ Emit once per milestone (100, 500, 1000, 2500, 5000 points) and on level up:
 ```json
 { "score": 500, "achievement": "Reached 500 points!", "level": 1 }
 ```
-**Never use `achievementTriggered` — it is rejected by pac-man-services.**
+**Never use `achievementTriggered` — it is rejected by maze-game-services.**
 
 ## Test
 
-1. Start pac-man-services: `cd ../pac-man-services && node src/server.js`
+1. Start maze-game-services: `cd ../maze-game-services && node src/server.js`
 2. Start game: `npm run dev`
 3. Open game in browser, earn points
 4. Open `http://localhost:3001` — events should appear within 2 seconds
@@ -70,6 +70,6 @@ Emit once per milestone (100, 500, 1000, 2500, 5000 points) and on level up:
 
 ## Integration context
 
-Consumer repo: https://github.com/NickAzureDevops/pac-man-services
+Consumer repo: https://github.com/NickAzureDevops/maze-game-services
 
 This repo is the event **producer** only. Do not add API routes or dashboard logic here.

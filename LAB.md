@@ -3,6 +3,9 @@
 > **Total time: 20–30 minutes**
 > **Goal:** Show how GitHub Copilot Apps evolves a legacy game into a multi-repo, event-driven system using Canvas, Plan Mode, Agent Mode, MCP, Multi-repo tasks, and Agent Skills.
 
+Reference video:
+- https://www.youtube.com/watch?v=fpP20wKaKRc&t=1s
+
 ## ⏱️ Timing Guide
 
 | Segment | Feature | Time |

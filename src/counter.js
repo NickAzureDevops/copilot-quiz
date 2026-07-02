@@ -1,4 +1,4 @@
-// Event bridge — forwards game events to pac-man-services
+// Event bridge — forwards game events to maze-game-services
 export function emitEvent(type, payload) {
   fetch('http://localhost:3001/event', {
     method: 'POST',
