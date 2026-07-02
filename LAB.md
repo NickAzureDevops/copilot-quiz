@@ -8,8 +8,8 @@
 | Segment | Feature | Time |
 | --- | --- | --- |
 | 0:00 | Setup + narrative framing | 2 min |
-| 2:00 | **Plan Mode** | 4 min |
-| 6:00 | **Canvas** | 3 min |
+| 2:00 | **Canvas** | 3 min |
+| 5:00 | **Plan Mode** | 4 min |
 | 9:00 | **Agent Mode / Agent Merge** | 5 min |
 | 14:00 | **MCP** | 4 min |
 | 18:00 | **Multi-repo task** | 5 min |
@@ -30,8 +30,8 @@
               │
    ┌──────────┼──────────────┐
    ▼          ▼              ▼
-🎮 maze-game   🌐 pac-man-services   🔗 MCP Layer
-(event producer) (event consumer)   (tool bridge)
+🎮 maze-game   🌐 maze-game-services   🔗 MCP Layer
+(event producer) (event consumer)    (tool bridge)
    │                   │
    └──── HTTP POST ────┘
          /event
@@ -42,7 +42,7 @@
 | Repo | Role |
 | --- | --- |
 | **maze-game** (this repo) | Legacy frontend — Game Agent instruments it |
-| **pac-man-services** | AI-built backend — Platform Agent creates it |
+| **maze-game-services** | AI-built backend — Platform Agent creates it |
 
 ---
 
@@ -51,7 +51,7 @@
 Before starting, have these open and ready:
 
 1. [maze-game](https://github.com/NickAzureDevops/maze-game) open in GitHub Copilot Apps
-2. [pac-man-services](https://github.com/NickAzureDevops/pac-man-services) open in a second tab
+2. [maze-game-services](https://github.com/NickAzureDevops/maze-game-services) open in a second tab
 3. Game running locally: `npm run dev` → `http://localhost:5173`
 
 **Opening line:**
@@ -61,7 +61,31 @@ Play the game for 10 seconds. Show it works. Then stop.
 
 ---
 
-## 🟣 1. Plan Mode (4 min)
+## 🟦 1. Canvas (3 min)
+
+> **What you're showing:** Canvas is the visual workspace where plans are shown, approved, and tracked in real time — it's the control surface for everything that follows.
+
+### What to do
+
+Open the Canvas panel and show it before triggering anything. Walk through what's visible:
+
+1. **Plan view** — proposed steps are listed with file targets and constraints
+2. **Approval gate** — the "Approve" button is visible; nothing runs until you click it
+3. **Execution state** — after approval, each step shows in-progress / done status in real time
+
+### What to point out
+
+- Canvas is not a chat window — it's an orchestration surface
+- The human stays in control: the plan is always reviewed before execution
+- You can edit the plan in Canvas before approving (show the edit icon)
+- Canvas sits above the agents — it's where the whole system is shaped
+
+**Key message:**
+> "Canvas is the Human↔AI↔System interface. Traditional UIs are for using software. Canvas is for shaping it while it runs."
+
+---
+
+## 🟣 2. Plan Mode (4 min)
 
 > **What you're showing:** Copilot reasons about an existing codebase and proposes a structured plan before touching any code.
 
@@ -82,32 +106,10 @@ In the Copilot Chat panel in the maze-game session, type:
 - Copilot found the score logic without being told where it lives
 - The plan calls out what it will **not** touch (gameplay, rendering, controls)
 - Nothing has been written yet — this is pure reasoning
+- The plan appears in Canvas, where you can edit or approve it
 
 **Key message:**
-> "Plan Mode separates reasoning from execution. The agent thinks first, you approve, then it acts."
-
----
-
-## 🟦 2. Canvas (3 min)
-
-> **What you're showing:** Canvas is the visual workspace where plans are displayed, approved, and tracked.
-
-### What to do
-
-After the plan appears, point to the Canvas panel. Walk through:
-
-1. **Plan view** — the proposed steps are listed with file targets and constraints
-2. **Approval gate** — the "Approve" button is visible; nothing runs until you click it
-3. **Execution state** — after approval, each step shows in-progress / done status in real time
-
-### What to point out
-
-- Canvas is not just a chat window — it's an orchestration surface
-- The human stays in control: plan is always reviewed before execution
-- You can edit the plan in Canvas before approving (show the edit icon)
-
-**Key message:**
-> "Canvas is where planning becomes execution — with a human in the loop."
+> "Plan Mode separates reasoning from execution. The agent thinks first, you approve in Canvas, then it acts."
 
 ---
 
@@ -123,7 +125,7 @@ Approve the plan. Watch the **Game Agent** execute:
 2. It adds `emitEvent('scoreUpdated', ...)` call sites in `src/main.js`
 3. It adds milestone checks for `achievementCandidate`
 
-Then switch to the pac-man-services tab. Trigger the **Platform Agent**:
+Then switch to the maze-game-services tab. Trigger the **Platform Agent**:
 
 > "Build the event platform for this game. It needs a POST /event endpoint, a GET /events endpoint, and a live dashboard. Accept only scoreUpdated and achievementCandidate events."
 
@@ -133,7 +135,7 @@ Show both agents working — Game Agent on one repo, Platform Agent on the other
 
 With both agents done, trigger the **Integration Agent**:
 
-> "Verify both repos are compatible — check that the event schema from maze-game matches what pac-man-services accepts."
+> "Verify both repos are compatible — check that the event schema from maze-game matches what maze-game-services accepts."
 
 Point out that the Integration Agent reads from both repos and produces a single validation result. This is **Agent Merge** — multiple agents contributing to one outcome.
 
@@ -183,12 +185,12 @@ Then explain what MCP is:
 
 Open a new session with **both repos** available. Type:
 
-> "The maze-game emits events and pac-man-services receives them. Show me the full event flow from the game to the dashboard and confirm the schema matches end to end."
+> "The maze-game emits events and maze-game-services receives them. Show me the full event flow from the game to the dashboard and confirm the schema matches end to end."
 
 Watch Copilot:
 
 1. Read `src/counter.js` in maze-game — finds the POST shape
-2. Read `src/server.js` in pac-man-services — finds the accepted event types
+2. Read `src/server.js` in maze-game-services — finds the accepted event types
 3. Compare schemas and confirm they match
 4. Report which events flow and what the dashboard will show
 
@@ -201,7 +203,7 @@ Watch Copilot:
 cd maze-game && npm run dev
 
 # Terminal 2 — platform
-cd pac-man-services && node src/server.js
+cd maze-game-services && node src/server.js
 ```
 
 Play the game. Open `http://localhost:3001`. Show events appearing in the dashboard as you score points.
