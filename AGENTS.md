@@ -1,7 +1,6 @@
 # AGENTS.md — maze-game
 
-Browser-based maze game that emits events to maze-game-services.
-This is a **legacy system being AI-instrumented** — a Vite + vanilla JS app.
+Browser-based maze game (Vite + vanilla JS) with optional event emission to maze-game-services.
 
 ## Setup
 
@@ -22,20 +21,19 @@ index.html      # canvas + HUD structure
 
 ## What you MAY change
 
-- `src/counter.js` — the `emitEvent` implementation
-- `emitEvent` call sites in `src/main.js` (adding/fixing calls only)
-- Event type strings and payload shapes to match the platform schema
+- `src/main.js` gameplay logic, player behavior, maze interactions, and UI state
+- `src/style.css` visuals, glow/theme, HUD presentation, and responsive polish
+- `index.html` structure for new game UI elements
+- `src/counter.js` event bridge behavior and payload fields
+- New `src/*` modules/assets (including SVG-based player rendering helpers)
 
 ## What you MUST NOT change
 
-- Canvas rendering logic (`draw()` function)
-- Ghost AI or movement (`moveGhost()` function)
-- Maze layout (`TEMPLATE` array)
-- Keyboard controls (`keydown` handler)
-- Game loop timing (`PAC_SPEED`, `GHOST_SPEED`)
-- `index.html` structure or HUD element IDs
+- Development/build tooling contract (`npm run dev`, `npm run build`, `npm run preview`)
+- Event posting endpoint host unless explicitly requested (`http://localhost:3001/event`)
+- Fire-and-forget behavior for event emission (never block gameplay on network failures)
 
-## Event emission rules
+## Event emission rules (when events are used)
 
 All events POST fire-and-forget to `http://localhost:3001/event`:
 
@@ -72,4 +70,4 @@ Emit once per milestone (100, 500, 1000, 2500, 5000 points) and on level up:
 
 Consumer repo: https://github.com/NickAzureDevops/maze-game-services
 
-This repo is the event **producer** only. Do not add API routes or dashboard logic here.
+This repo can be developed as a full game client. Avoid adding backend API routes here; keep it a front-end game app.

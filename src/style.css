@@ -152,22 +152,45 @@ h1 {
 /* ── Game container ──────────────────────────────────── */
 #game-container {
   position: relative;
-  border: 1px solid var(--border-strong);
-  border-radius: 20px;
+  width: 560px;
+  max-width: 100%;
+  margin-inline: auto;
+  border: 2px solid rgb(255 94 94 / 0.92);
+  border-radius: 12px;
+  background: #120406;
   box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.02),
-    0 24px 54px rgb(0 0 0 / 0.45),
-    0 0 42px color-mix(in oklab, var(--primary) 26%, transparent),
-    inset 0 0 24px rgb(255 255 255 / 0.03);
+    0 0 26px rgb(239 68 68 / 0.72),
+    0 0 52px rgb(244 63 94 / 0.58),
+    0 0 94px rgb(251 113 133 / 0.36),
+    inset 0 0 18px rgb(254 202 202 / 0.12);
+  animation: game-glow 1.8s ease-in-out infinite alternate;
   overflow: hidden;
   line-height: 0;
 }
 
 #game {
   display: block;
-  background: #000000;
+  background: linear-gradient(180deg, #3f0b14 0%, #120406 100%);
   max-width: 100%;
   height: auto;
+}
+
+@keyframes game-glow {
+  from {
+    box-shadow:
+      0 0 18px rgb(239 68 68 / 0.56),
+      0 0 38px rgb(244 63 94 / 0.44),
+      0 0 70px rgb(251 113 133 / 0.25),
+      inset 0 0 14px rgb(254 202 202 / 0.08);
+  }
+
+  to {
+    box-shadow:
+      0 0 30px rgb(248 113 113 / 0.8),
+      0 0 60px rgb(244 63 94 / 0.66),
+      0 0 110px rgb(251 113 133 / 0.42),
+      inset 0 0 24px rgb(254 202 202 / 0.16);
+  }
 }
 
 /* ── Overlay (start / game-over) ─────────────────────── */

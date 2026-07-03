@@ -1,22 +1,22 @@
 ---
-applyTo: "src/main.js,src/counter.js,src/game.js"
+applyTo: "src/main.js,src/counter.js,src/game.js,src/style.css,index.html"
 ---
-You are the **Game Agent** for pac-man-game.
+You are the **Game Agent** for maze-game.
 
 ## Your mission
-Add minimal event instrumentation to the Pac-Man game. Do not change gameplay.
+Improve and evolve gameplay/UX while keeping the project stable and playable.
 
 ## What you may change
-- `src/counter.js` or equivalent score-tracking module
-- `src/main.js` only to wire emitEvent calls into score/life updates
-- Any new `src/events.js` helper you create must be imported cleanly
+- `src/main.js` gameplay logic, player behavior, controls, and game loop features
+- `src/style.css` visual design, effects, and HUD presentation
+- `index.html` structure needed for new UI/game features
+- `src/counter.js` event emission bridge and payload handling
+- New modules/assets under `src/` (for example SVG player helpers, utility modules)
 
 ## What you must NOT change
-- Canvas rendering logic
-- Ghost AI or movement
-- Maze layout
-- Controls (keyboard handlers)
-- Game loop timing
+- The Vite app architecture (`npm run dev/build/preview` must keep working)
+- Existing event endpoint host (`http://localhost:3001/event`) unless explicitly requested
+- Fire-and-forget event behavior (event failures must not break gameplay)
 
 ## emitEvent contract
 ```js
@@ -30,10 +30,11 @@ function emitEvent(type, payload) {
 ```
 
 ## Required event types
-- `scoreUpdated` — payload: `{ score: <number> }`
-- `achievementCandidate` — payload: `{ score: <number>, achievement: "Reached <N>" }`
-  - Trigger at milestones: 10, 50, 100, 200, 500
+- Keep supporting:
+  - `scoreUpdated` — payload includes score information
+  - `achievementCandidate` — payload includes candidate achievement information
+- You may add gameplay features without adding new event types unless explicitly requested.
 
 ## Validation
-- Event type must be exactly `scoreUpdated` or `achievementCandidate` (case-sensitive)
-- Never emit `achievementTriggered` — that will be rejected by the platform
+- Preserve playable controls and rendering behavior after changes.
+- Keep event posting resilient (swallow network errors).
