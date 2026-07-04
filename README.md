@@ -1,24 +1,24 @@
-# 🧩 Maze Game
+# 🧠 Copilot Quiz
 
-A browser-based maze game with a modern dashboard shell, built with vanilla JavaScript and [Vite](https://vite.dev/).
+A browser-based scenario quiz with a modern dashboard shell, built with vanilla JavaScript and [Vite](https://vite.dev/).
 
-![Maze Game dashboard preview](./public/maze-game-dashboard.png)
+![Copilot Quiz dashboard preview](./public/copilot-quiz-dashboard.png)
 
-This repository is the **Game Agent** side of a broader **GitHub Copilot Apps** demo. It keeps Maze Game playable while acting as the event producer for the wider system.
+This repository is the **Game Agent** side of a broader **GitHub Copilot Apps** demo. It runs the interactive quiz while acting as the event producer for the wider system.
 
 Reference demo video:
 - https://www.youtube.com/watch?v=fpP20wKaKRc&t=1s
 
 - **In this repo** — context-aware code reasoning, safe event instrumentation, and gameplay-preserving changes
-- **In the broader system** — backend services, multi-repo orchestration, full-stack generation, and end-to-end event flow with [NickAzureDevops/maze-game-services](https://github.com/NickAzureDevops/maze-game-services)
+- **In the broader system** — backend services, multi-repo orchestration, full-stack generation, and end-to-end event flow with [NickAzureDevops/copilot-quiz-service](https://github.com/NickAzureDevops/copilot-quiz-service)
 
-Together, this Maze Game repo and [NickAzureDevops/maze-game-services](https://github.com/NickAzureDevops/maze-game-services) demonstrate:
+Together, this quiz repo and [NickAzureDevops/copilot-quiz-service](https://github.com/NickAzureDevops/copilot-quiz-service) demonstrate:
 
 - **Context-aware reasoning** — Copilot understands existing code in both repos and makes targeted changes.
 - **Planning and approval workflow** — Plans can be generated, reviewed, and then executed across repos.
 - **Multi-repository orchestration** — Copilot coordinates changes in the producer and consumer repos together.
-- **Full-stack generation** — The demo spans frontend gameplay, backend services, and dashboard behavior.
-- **Event-driven architecture understanding** — Copilot models the flow from game events to service ingestion to UI updates.
+- **Full-stack generation** — The demo spans frontend quiz UX, backend services, and dashboard behavior.
+- **Event-driven architecture understanding** — Copilot models the flow from quiz events to service ingestion to UI updates.
 
 ## Event Contract (Producer Side)
 
@@ -55,12 +55,9 @@ This repo includes a reusable prompt skill:
 
 Use it to validate producer-side contract compliance before demos or merges.
 
-## Controls
+## Interaction
 
-| Key | Action |
-|-----|--------|
-| `Arrow Keys` / `WASD` | Move player |
-| `Enter` / `Space` | Start / resume game |
+Use the on-screen answer buttons to respond, **Next question** to advance, and **Restart quiz** to run again.
 
 ## Getting Started
 
