@@ -74,3 +74,9 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 npm run build
 npm run preview
 ```
+
+## Security & updates
+
+- Dependabot is enabled for npm dependencies with a weekly update cadence (`.github/dependabot.yml`).
+- A scheduled GitHub Actions workflow (`.github/workflows/npm-audit.yml`) runs every Monday at 09:00 UTC and on relevant pull requests to produce `audit.json`. It fails when `critical > 0` or `high > 0`, and uploads the full report as the `npm-audit-report` artifact.
+- You can run the audit on demand from the Actions tab using **Run workflow** (`workflow_dispatch`).
